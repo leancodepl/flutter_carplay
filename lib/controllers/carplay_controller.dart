@@ -1,18 +1,7 @@
-import 'package:flutter/services.dart';
 import 'package:car_play/car_play.dart';
-import 'package:car_play/helpers/carplay_helper.dart';
-import 'package:car_play/helpers/enum_utils.dart';
-import 'package:car_play/models/alert/alert_action.dart';
-import 'package:car_play/models/button/bar_button.dart';
-import 'package:car_play/models/button/text_button.dart';
-import 'package:car_play/models/grid/grid_button.dart';
-import 'package:car_play/models/grid/grid_template.dart';
-import 'package:car_play/models/list/list_template.dart';
-import 'package:car_play/models/information/information_template.dart';
-import 'package:car_play/models/poi/poi.dart';
-import 'package:car_play/models/poi/poi_template.dart';
-import 'package:car_play/models/tabbar/tabbar_template.dart';
 import 'package:car_play/constants/private_constants.dart';
+import 'package:car_play/helpers/carplay_helper.dart';
+import 'package:flutter/services.dart';
 
 /// [FlutterCarPlayController] is an root object in order to control and communication
 /// system with the Apple CarPlay and native functions.
@@ -92,7 +81,8 @@ class FlutterCarPlayController {
         template.runtimeType == CPGridTemplate ||
         template.runtimeType == CPInformationTemplate ||
         template.runtimeType == CPPointOfInterestTemplate ||
-        template.runtimeType == CPListTemplate) {
+        template.runtimeType == CPListTemplate ||
+        template.runtimeType == CPNowPlayingTemplate) {
       templateHistory.add(template);
     } else {
       throw TypeError();
@@ -171,9 +161,7 @@ class FlutterCarPlayController {
             break l1;
           }
         }
-      }
-      else
-      {
+      } else {
         if (t.runtimeType.toString() == "CPInformationTemplate") {
           l2:
           for (CPTextButton b in t.actions) {
@@ -186,6 +174,4 @@ class FlutterCarPlayController {
       }
     }
   }
-  }
-
-
+}

@@ -28,6 +28,8 @@ export "package:car_play/models/list/list_section.dart"
     show CPListSection;
 export "package:car_play/models/list/list_template.dart"
     show CPListTemplate;
+export "package:car_play/models/now_playing/now_playing_template.dart"
+    show CPNowPlayingTemplate;
 export "package:car_play/models/poi/poi.dart"
     show CPPointOfInterest;
 export "package:car_play/models/poi/poi_template.dart"

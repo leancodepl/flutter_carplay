@@ -40,6 +40,7 @@ CarPlay apps are built from a fixed set of user interface templates that iOS ren
 - [x] Tab Bar Template
 - [x] Information Template (contribution from [OSch11](https://github.com/OSch11/flutter_carplay))
 - [x] Point of Interest Template (contribution from [OSch11](https://github.com/OSch11/flutter_carplay))
+- [x] Now Playing Template
 
 By evaluating this information, you can request for the relevant entitlement from Apple.
 
@@ -51,7 +52,6 @@ Other templates will be supported in the future releases by `flutter_carplay`.
 - [ ] Search
 - [ ] Voice Control & "Hey Siri" for hands-free voice activation
 - [ ] Contact
-- [ ] Now Playing
 
 ## Contributing
 

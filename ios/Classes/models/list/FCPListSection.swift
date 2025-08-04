@@ -27,7 +27,7 @@ class FCPListSection {
   }
   
   var get: CPListSection {
-    let listSection = CPListSection.init(items: items, header: header, sectionIndexTitle: header)
+    let listSection = CPListSection.init(items: items, header: header, sectionIndexTitle: nil)
     self._super = listSection
     return listSection
   }

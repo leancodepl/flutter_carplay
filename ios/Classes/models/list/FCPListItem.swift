@@ -15,6 +15,7 @@ class FCPListItem {
   private var detailText: String?
   private var isOnPressListenerActive: Bool = false
   private var completeHandler: (() -> Void)?
+  private var callbackInProgress: Bool = false
   private var image: String?
   private var playbackProgress: CGFloat?
   private var isPlaying: Bool?
@@ -35,7 +36,10 @@ class FCPListItem {
   
   var get: CPListItem {
     let listItem = CPListItem.init(text: text, detailText: detailText)
-    listItem.handler = ((CPSelectableListItem, @escaping () -> Void) -> Void)? { selectedItem, complete in
+    listItem.handler = { selectedItem, complete in
+      guard !self.callbackInProgress else { return }
+
+      self.callbackInProgress = true
       if self.isOnPressListenerActive == true {
         DispatchQueue.main.async {
           self.completeHandler = complete
@@ -43,6 +47,7 @@ class FCPListItem {
                                            data: ["elementId": self.elementId])
         }
       } else {
+        self.callbackInProgress = false
         complete()
       }
     }
@@ -69,6 +74,7 @@ class FCPListItem {
     guard self.completeHandler != nil else {
       return
     }
+    self.callbackInProgress = false
     self.completeHandler!()
     self.completeHandler = nil
   }
